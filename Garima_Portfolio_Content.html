@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Garima Singh — Cloud Computing Technologies Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1F3864;
+    --blue: #2E74B5;
+    --light-blue: #EAF2FB;
+    --white: #FFFFFF;
+    --off-white: #F7F9FC;
+    --text: #1A1A2E;
+    --text-muted: #5A6472;
+    --border: #D0DCF0;
+    --accent: #2E74B5;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text);
+    background: var(--white);
+    line-height: 1.6;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--navy);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 48px;
+    height: 60px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+  }
+  nav .brand { color: white; font-weight: 600; font-size: 1rem; letter-spacing: 0.04em; }
+  nav ul { list-style: none; display: flex; gap: 32px; }
+  nav ul li a {
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  nav ul li a:hover { color: white; }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, var(--navy) 0%, #2E4B8A 60%, var(--blue) 100%);
+    color: white;
+    padding: 100px 48px 80px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 48px;
+    align-items: center;
+  }
+  .hero-text .eyebrow {
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 16px;
+  }
+  .hero-text h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.4rem;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+  .hero-text .tagline {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 28px;
+    max-width: 560px;
+  }
+  .hero-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 36px; }
+  .hero-tags span {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 20px;
+    padding: 5px 14px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+  .hero-contact { display: flex; flex-wrap: wrap; gap: 20px; }
+  .hero-contact a {
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .hero-contact a:hover { color: white; }
+  .hero-badge {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 16px;
+    padding: 28px 32px;
+    text-align: center;
+    min-width: 180px;
+  }
+  .hero-badge .years { font-family: 'Playfair Display', serif; font-size: 3rem; color: white; line-height: 1; }
+  .hero-badge .years-label { font-size: 0.75rem; color: rgba(255,255,255,0.6); letter-spacing: 0.08em; text-transform: uppercase; margin-top: 4px; }
+  .hero-badge .certs { margin-top: 20px; border-top: 1px solid rgba(255,255,255,0.15); padding-top: 16px; }
+  .hero-badge .cert-tag { display: inline-block; background: rgba(255,255,255,0.15); border-radius: 4px; font-size: 0.7rem; font-weight: 600; padding: 3px 8px; margin: 3px 2px; letter-spacing: 0.04em; }
+
+  /* SECTION LAYOUT */
+  section { padding: 72px 48px; }
+  section:nth-child(even) { background: var(--off-white); }
+
+  .section-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 8px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: var(--navy);
+    margin-bottom: 40px;
+  }
+  .section-title span { color: var(--blue); }
+
+  /* PROFILE / BIO */
+  .bio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+  .bio-text p { color: var(--text-muted); margin-bottom: 16px; font-size: 0.97rem; }
+  .bio-text p strong { color: var(--text); }
+  .bio-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 8px; }
+  .stat-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+    border-left: 3px solid var(--blue);
+  }
+  .stat-card .num { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--navy); }
+  .stat-card .lbl { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 2px; }
+
+  /* RESUME EMBED */
+  .resume-frame {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(30,56,100,0.08);
+  }
+  .resume-toolbar {
+    background: var(--navy);
+    padding: 14px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+  .resume-toolbar a {
+    background: var(--blue);
+    color: white;
+    text-decoration: none;
+    padding: 6px 18px;
+    border-radius: 6px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+  .resume-placeholder {
+    padding: 48px;
+    text-align: center;
+    color: var(--text-muted);
+  }
+  .resume-placeholder .big-icon { font-size: 3rem; margin-bottom: 16px; }
+  .resume-placeholder p { max-width: 400px; margin: 0 auto; font-size: 0.9rem; }
+  .resume-placeholder .upload-note {
+    margin-top: 20px;
+    background: var(--light-blue);
+    border-radius: 8px;
+    padding: 14px 20px;
+    font-size: 0.82rem;
+    color: var(--navy);
+    font-weight: 500;
+  }
+
+  /* WORK SAMPLES */
+  .samples-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .sample-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .sample-card:hover { box-shadow: 0 8px 32px rgba(30,56,100,0.12); transform: translateY(-2px); }
+  .sample-header {
+    background: linear-gradient(135deg, var(--navy), var(--blue));
+    padding: 28px 24px 20px;
+    color: white;
+  }
+  .sample-header .tag {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    background: rgba(255,255,255,0.15);
+    border-radius: 4px;
+    padding: 3px 8px;
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+  .sample-header h3 { font-size: 1rem; font-weight: 600; }
+  .sample-body { padding: 20px 24px; }
+  .sample-body p { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px; }
+  .sample-body .tech-pills { display: flex; flex-wrap: wrap; gap: 6px; }
+  .sample-body .tech-pills span {
+    background: var(--light-blue);
+    color: var(--blue);
+    border-radius: 4px;
+    padding: 3px 8px;
+    font-size: 0.72rem;
+    font-weight: 600;
+  }
+
+  /* EDUCATION */
+  .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  .edu-block h3 { font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 16px; }
+  .edu-item {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 20px;
+    margin-bottom: 12px;
+    border-left: 3px solid var(--blue);
+  }
+  .edu-item .title { font-weight: 600; font-size: 0.9rem; color: var(--navy); }
+  .edu-item .sub { font-size: 0.8rem; color: var(--text-muted); margin-top: 3px; }
+  .edu-item .date { font-size: 0.75rem; color: var(--blue); font-weight: 600; margin-top: 6px; }
+
+  .cert-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 8px; }
+  .cert-badge {
+    background: var(--light-blue);
+    border-radius: 8px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .cert-badge .icon { font-size: 1.2rem; }
+  .cert-badge .cert-name { font-size: 0.8rem; font-weight: 600; color: var(--navy); }
+  .cert-badge .issuer { font-size: 0.72rem; color: var(--text-muted); }
+
+  .docs-section { margin-top: 32px; }
+  .docs-section h3 { font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 16px; }
+  .doc-list { display: flex; flex-direction: column; gap: 10px; }
+  .doc-item {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .doc-item .doc-info .doc-name { font-size: 0.88rem; font-weight: 600; color: var(--navy); }
+  .doc-item .doc-info .doc-desc { font-size: 0.78rem; color: var(--text-muted); margin-top: 2px; }
+  .doc-item .doc-link {
+    background: var(--navy);
+    color: white;
+    text-decoration: none;
+    padding: 6px 16px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .placeholder-link {
+    background: var(--border) !important;
+    color: var(--text-muted) !important;
+    cursor: default;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy);
+    color: rgba(255,255,255,0.7);
+    text-align: center;
+    padding: 32px 48px;
+    font-size: 0.82rem;
+  }
+  footer a { color: rgba(255,255,255,0.9); text-decoration: none; }
+  footer .footer-name { font-weight: 600; color: white; margin-bottom: 6px; font-size: 0.95rem; }
+
+  @media (max-width: 900px) {
+    nav { padding: 0 20px; }
+    nav ul { gap: 16px; }
+    .hero { grid-template-columns: 1fr; padding: 60px 24px 48px; }
+    .hero-badge { display: none; }
+    .hero-text h1 { font-size: 2.4rem; }
+    section { padding: 48px 24px; }
+    .bio-grid, .edu-grid { grid-template-columns: 1fr; }
+    .samples-grid { grid-template-columns: 1fr; }
+    .cert-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="brand">Garima Singh</div>
+  <ul>
+    <li><a href="#profile">Profile</a></li>
+    <li><a href="#resume">Resume</a></li>
+    <li><a href="#work">Work Samples</a></li>
+    <li><a href="#education">Education</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-text">
+    <div class="eyebrow">Cloud Computing Technologies · George Brown College</div>
+    <h1>Garima Singh</h1>
+    <p class="tagline">IT Professional & Cloud Computing Student with 9+ years of enterprise experience across Microsoft infrastructure, identity management, and service operations.</p>
+    <div class="hero-tags">
+      <span>Microsoft 365</span>
+      <span>Azure / Entra ID</span>
+      <span>Active Directory</span>
+      <span>Intune & Endpoint</span>
+      <span>ITIL</span>
+      <span>Windows Server</span>
+      <span>Cisco Networking</span>
+    </div>
+    <div class="hero-contact">
+      <a href="mailto:garima.singh@georgebrown.ca">✉ garima.singh@georgebrown.ca</a>
+      <a href="tel:4168275625">📞 416-827-5625</a>
+      <a href="https://linkedin.com/in/garima-singh-397263223" target="_blank">🔗 LinkedIn</a>
+      <span style="color:rgba(255,255,255,0.5)">📍 Toronto, ON</span>
+    </div>
+  </div>
+  <div class="hero-badge">
+    <div class="years">9+</div>
+    <div class="years-label">Years IT Experience</div>
+    <div class="certs">
+      <div class="cert-tag">CCNA</div>
+      <div class="cert-tag">MCSE</div>
+      <div class="cert-tag">CompTIA A+</div>
+      <div class="cert-tag">MS-900</div>
+    </div>
+  </div>
+</header>
+
+<!-- SECTION 1: PROFILE -->
+<section id="profile">
+  <div class="section-label">01 · About</div>
+  <div class="section-title">Profile &amp; <span>Summary</span></div>
+  <div class="bio-grid">
+    <div class="bio-text">
+      <p>I am an IT professional with <strong>9+ years of enterprise experience</strong> in service desk operations, Microsoft infrastructure, and network engineering, currently enrolled in the <strong>Cloud Computing Technologies (T465) diploma program</strong> at George Brown College.</p>
+      <p>My career has spanned roles at <strong>HCL Technologies, Concentrix (Microsoft Premier Support), Teleperformance</strong>, and freelance network engineering — giving me deep cross-functional exposure to enterprise IT environments across Canada and India.</p>
+      <p>I am actively pursuing cloud and identity certifications including <strong>MS-102 (Microsoft 365 Administrator Expert)</strong>, <strong>SC-200 (Security Operations Analyst)</strong>, and <strong>MD-102 (Endpoint Administrator)</strong> to accelerate my transition into cloud-focused roles in the Canadian market.</p>
+      <p>I hold a <strong>Master of Technology in Computer Science & Engineering</strong> and bring a strong academic foundation alongside hands-on lab experience with Microsoft 365 tenants, PowerShell automation, Azure Entra ID, and Cisco routing & switching.</p>
+    </div>
+    <div class="bio-stats">
+      <div class="stat-card">
+        <div class="num">9+</div>
+        <div class="lbl">Years IT Experience</div>
+      </div>
+      <div class="stat-card">
+        <div class="num">L2</div>
+        <div class="lbl">Enterprise Support Level</div>
+      </div>
+      <div class="stat-card">
+        <div class="num">5+</div>
+        <div class="lbl">Active Certifications</div>
+      </div>
+      <div class="stat-card">
+        <div class="num">T465</div>
+        <div class="lbl">GBC Cloud Computing Program</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 2: RESUME -->
+<section id="resume">
+  <div class="section-label">02 · Skills</div>
+  <div class="section-title">Resume &amp; <span>Qualifications</span></div>
+  <div class="resume-frame">
+    <div class="resume-toolbar">
+      <span>📄 Garima_Singh_Resume.pdf</span>
+      <a href="#" class="placeholder-link" style="background:rgba(255,255,255,0.2);color:white;padding:6px 18px;border-radius:6px;font-size:0.78rem;font-weight:600;text-decoration:none;">⬇ Download Resume</a>
+    </div>
+    <div class="resume-placeholder">
+      <div class="big-icon">📋</div>
+      <p style="font-weight:600;color:var(--navy);font-size:1rem;margin-bottom:8px;">Upload Your Resume PDF Here</p>
+      <p>Embed your resume as a PDF using Google Drive embed or upload directly to your portfolio platform. On Google Sites: Insert → Drive → select your resume PDF.</p>
+      <div class="upload-note">💡 To embed on Google Sites: Upload resume to Google Drive → Share as "Anyone with link (Viewer)" → Insert → Drive → choose your file.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3: WORK SAMPLES -->
+<section id="work">
+  <div class="section-label">03 · Portfolio</div>
+  <div class="section-title">Work <span>Samples</span></div>
+  <div class="samples-grid">
+
+    <div class="sample-card">
+      <div class="sample-header">
+        <div class="tag">Lab · CLCT4005</div>
+        <h3>Microsoft 365 Bulk User Provisioning</h3>
+      </div>
+      <div class="sample-body">
+        <p>Performed CSV-based bulk user import in a live Microsoft 365 tenant (gsccie1.onmicrosoft.com), resolved BOM/encoding errors, assigned Microsoft 365 E3 licenses, created IT Department groups, and generated a PowerShell compliance report documenting license allocation.</p>
+        <div class="tech-pills">
+          <span>PowerShell</span><span>Microsoft 365 Admin</span><span>CSV Import</span><span>Azure AD</span><span>MS Graph</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="sample-card">
+      <div class="sample-header">
+        <div class="tag">Lab · CLCT4003</div>
+        <h3>Windows Server: Active Directory & WDS</h3>
+      </div>
+      <div class="sample-body">
+        <p>Configured Active Directory Domain Services, DNS, DHCP, and Windows Deployment Services (WDS) in a VMware lab environment. Implemented Data Deduplication and Server Core administration, completing all lab exercises documented in the course submission portfolio.</p>
+        <div class="tech-pills">
+          <span>Windows Server 2022</span><span>AD DS</span><span>DNS/DHCP</span><span>WDS</span><span>VMware</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="sample-card">
+      <div class="sample-header">
+        <div class="tag">Lab · CLCT4002</div>
+        <h3>Cisco Network Design – Packet Tracer</h3>
+      </div>
+      <div class="sample-body">
+        <p>Designed and implemented multi-router enterprise network topologies using Cisco Packet Tracer (Labs 1–5), configuring OSPF, EIGRP, VLANs, STP, NAT, and ACLs. Verified end-to-end connectivity and documented configurations with structured lab reports.</p>
+        <div class="tech-pills">
+          <span>Cisco Packet Tracer</span><span>OSPF</span><span>VLANs</span><span>NAT</span><span>ACLs</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="sample-card">
+      <div class="sample-header">
+        <div class="tag">Lab · CLCT4000</div>
+        <h3>Windows 10/11 Deployment & Endpoint Management</h3>
+      </div>
+      <div class="sample-body">
+        <p>Completed 8 lab documents covering Windows 10/11 imaging, BitLocker encryption, Storage Spaces, Microsoft Intune enrollment, Windows Autopilot configuration, and endpoint compliance policy implementation aligned to the MD-102 exam objectives.</p>
+        <div class="tech-pills">
+          <span>Windows 11</span><span>Intune</span><span>BitLocker</span><span>Autopilot</span><span>DISM</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="sample-card">
+      <div class="sample-header">
+        <div class="tag">Certification Prep</div>
+        <h3>MS-102 Exam Preparation – Anki Flash Card Library</h3>
+      </div>
+      <div class="sample-body">
+        <p>Built a comprehensive 273-question Microsoft 365 Administrator Expert (MS-102) study library across 9 modules (PPT1–PPT9), including scenario-based multiple-choice cards covering Exchange Online, SharePoint, Teams, Intune, Conditional Access, and Identity Governance.</p>
+        <div class="tech-pills">
+          <span>MS-102</span><span>Exchange Online</span><span>Conditional Access</span><span>SharePoint</span><span>Teams</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="sample-card">
+      <div class="sample-header">
+        <div class="tag">Enterprise Experience</div>
+        <h3>Microsoft Premier Support – L2 Enterprise Escalations</h3>
+      </div>
+      <div class="sample-body">
+        <p>Delivered L2 enterprise support at Concentrix for Microsoft Premier clients, owning complex escalations across Windows Server (2008–2019), AD Replication, DNS/DHCP failures, Exchange hybrid environments, and GPO troubleshooting. Partnered directly with Microsoft Escalation Engineering teams.</p>
+        <div class="tech-pills">
+          <span>Windows Server</span><span>Active Directory</span><span>Exchange</span><span>Wireshark</span><span>NetMon</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SECTION 4: EDUCATION & ACKNOWLEDGEMENTS -->
+<section id="education">
+  <div class="section-label">04 · Credentials</div>
+  <div class="section-title">Education &amp; <span>Acknowledgements</span></div>
+
+  <div class="edu-grid">
+    <div class="edu-block">
+      <h3>🎓 Academic Qualifications</h3>
+      <div class="edu-item">
+        <div class="title">Cloud Computing Technologies — Diploma (T465)</div>
+        <div class="sub">George Brown College · Toronto, Ontario</div>
+        <div class="date">May 2026 – April 2027 · Currently Enrolled, Semester 1</div>
+      </div>
+      <div class="edu-item">
+        <div class="title">Master of Technology — Computer Science & Engineering</div>
+        <div class="sub">Kalinga University · India</div>
+        <div class="date">2018</div>
+      </div>
+      <div class="edu-item">
+        <div class="title">Bachelor of Technology — Information Technology</div>
+        <div class="sub">Guru Gobind Singh Indraprastha University · India</div>
+        <div class="date">2016</div>
+      </div>
+    </div>
+
+    <div class="edu-block">
+      <h3>🏅 Certifications</h3>
+      <div class="cert-grid">
+        <div class="cert-badge">
+          <div class="icon">🌐</div>
+          <div>
+            <div class="cert-name">CCNA</div>
+            <div class="issuer">Cisco · Recertified 2025</div>
+          </div>
+        </div>
+        <div class="cert-badge">
+          <div class="icon">🖥️</div>
+          <div>
+            <div class="cert-name">MCSE</div>
+            <div class="issuer">Microsoft</div>
+          </div>
+        </div>
+        <div class="cert-badge">
+          <div class="icon">🔧</div>
+          <div>
+            <div class="cert-name">CompTIA A+</div>
+            <div class="issuer">CompTIA · 220-1101/1102</div>
+          </div>
+        </div>
+        <div class="cert-badge">
+          <div class="icon">☁️</div>
+          <div>
+            <div class="cert-name">MS-900</div>
+            <div class="issuer">Microsoft 365 Fundamentals</div>
+          </div>
+        </div>
+        <div class="cert-badge">
+          <div class="icon">🛡️</div>
+          <div>
+            <div class="cert-name">SC-200 (In Progress)</div>
+            <div class="issuer">Microsoft Security Analyst</div>
+          </div>
+        </div>
+        <div class="cert-badge">
+          <div class="icon">📋</div>
+          <div>
+            <div class="cert-name">MS-102 (In Progress)</div>
+            <div class="issuer">Microsoft 365 Admin Expert</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DOCUMENTS SECTION -->
+  <div class="docs-section">
+    <h3>📁 Documents & Credentials</h3>
+    <div class="doc-list">
+      <div class="doc-item">
+        <div class="doc-info">
+          <div class="doc-name">Academic Transcript — George Brown College</div>
+          <div class="doc-desc">Official/Unofficial transcript from T465 Cloud Computing Technologies program</div>
+        </div>
+        <a href="#" class="doc-link placeholder-link" style="background:var(--border);color:var(--text-muted);text-decoration:none;padding:6px 16px;border-radius:6px;font-size:0.75rem;font-weight:600;">Upload Transcript</a>
+      </div>
+      <div class="doc-item">
+        <div class="doc-info">
+          <div class="doc-name">CCNA Certificate — Cisco</div>
+          <div class="doc-desc">Cisco Certified Network Associate · Recertified 2025</div>
+        </div>
+        <a href="#" class="doc-link placeholder-link" style="background:var(--border);color:var(--text-muted);text-decoration:none;padding:6px 16px;border-radius:6px;font-size:0.75rem;font-weight:600;">Upload Certificate</a>
+      </div>
+      <div class="doc-item">
+        <div class="doc-info">
+          <div class="doc-name">MCSE Certificate — Microsoft</div>
+          <div class="doc-desc">Microsoft Certified Solutions Expert</div>
+        </div>
+        <a href="#" class="doc-link placeholder-link" style="background:var(--border);color:var(--text-muted);text-decoration:none;padding:6px 16px;border-radius:6px;font-size:0.75zm;font-weight:600;">Upload Certificate</a>
+      </div>
+      <div class="doc-item">
+        <div class="doc-info">
+          <div class="doc-name">CompTIA A+ Certificate</div>
+          <div class="doc-desc">CompTIA A+ Core 1 & Core 2 (220-1101 / 220-1102)</div>
+        </div>
+        <a href="#" class="doc-link placeholder-link" style="background:var(--border);color:var(--text-muted);text-decoration:none;padding:6px 16px;border-radius:6px;font-size:0.75rem;font-weight:600;">Upload Certificate</a>
+      </div>
+      <div class="doc-item">
+        <div class="doc-info">
+          <div class="doc-name">Letter of Recommendation</div>
+          <div class="doc-desc">Add any letters of recommendation from professors or employers (if available)</div>
+        </div>
+        <a href="#" class="doc-link placeholder-link" style="background:var(--border);color:var(--text-muted);text-decoration:none;padding:6px 16px;border-radius:6px;font-size:0.75rem;font-weight:600;">Upload Letter</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">Garima Singh</div>
+  <p>Cloud Computing Technologies (T465) · George Brown College · Toronto, ON</p>
+  <p style="margin-top:8px;"><a href="mailto:garima.singh@georgebrown.ca">garima.singh@georgebrown.ca</a> · <a href="tel:4168275625">416-827-5625</a> · <a href="https://linkedin.com/in/garima-singh-397263223">LinkedIn</a></p>
+  <p style="margin-top:16px;opacity:0.5;font-size:0.75rem;">© 2026 Garima Singh. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
